@@ -15,7 +15,14 @@ public class PlayerControl : MonoBehaviour {
             //jump code
             if (Input.GetKey(KeyCode.UpArrow)){
                   Vector3 position = this.transform.position;
-                  position.y += jump / 4;
+                  position.y += jump / 10;
+                  this.transform.position = position;
+            }
+
+            // go down
+            if (Input.GetKey(KeyCode.DownArrow)){
+                  Vector3 position = this.transform.position;
+                  position.y -= jump / 10;
                   this.transform.position = position;
             }
 
@@ -34,6 +41,15 @@ public class PlayerControl : MonoBehaviour {
 
      private void OnTriggerEnter2D(Collider2D other){
             if (other.gameObject.CompareTag("NormalMushroom")){
+                  GameObject.Destroy(other.gameObject);
+            }
+            if (other.gameObject.CompareTag("ShitakeMushroom")){
+                  GameObject.Destroy(other.gameObject);
+            }
+            if (other.gameObject.CompareTag("MagicMushroom")){
+                  GameObject.Destroy(other.gameObject);
+            }
+            if (other.gameObject.CompareTag("TruffleMushroom")){
                   GameObject.Destroy(other.gameObject);
             }
      }
