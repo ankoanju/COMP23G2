@@ -41,16 +41,21 @@ public class PlayerControl : MonoBehaviour {
 
      private void OnTriggerEnter2D(Collider2D other){
             if (other.gameObject.CompareTag("NormalMushroom")){
-                  GameObject.Destroy(other.gameObject);
+                  other.gameObject.GetComponent<AudioSource>().Play();
+                  GameObject.Destroy(other.gameObject, 0.1f);
+                  
             }
             if (other.gameObject.CompareTag("ShitakeMushroom")){
-                  GameObject.Destroy(other.gameObject);
+                  other.gameObject.GetComponent<AudioSource>().Play();
+                  GameObject.Destroy(other.gameObject, 0.1f);
             }
             if (other.gameObject.CompareTag("MagicMushroom")){
-                  GameObject.Destroy(other.gameObject);
+                  other.gameObject.GetComponent<AudioSource>().Play();
+                  GameObject.Destroy(other.gameObject, 0.1f);
             }
             if (other.gameObject.CompareTag("TruffleMushroom")){
-                  GameObject.Destroy(other.gameObject);
+                  other.gameObject.GetComponent<AudioSource>().Play();
+                  GameObject.Destroy(other.gameObject, 0.1f);
             }
      }
 
