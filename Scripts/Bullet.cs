@@ -4,12 +4,28 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
-	public GameObject hitEffectAnim;
+	float moveSpeed = 7f;
 
-	//if the bullet hits a collider, play the explosion animation, then destroy the effect and the bullet
-	void OnCollisionEnter2D(Collision2D collision){
-		GameObject animEffect = Instantiate (hitEffectAnim, transform.position, Quaternion.identity);
-		Destroy(animEffect, 0.5f);
-		Destroy(gameObject);
+	Rigidbody2D rb;
+
+	Cat target;
+	Vector2 moveDirection;
+
+	// Use this for initialization
+	void Start () {
+		rb = GetComponent<Rigidbody2D> ();
+		target = GameObject.FindObjectOfType<Cat>();
+		moveDirection = (target.transform.position - transform.position).normalized * moveSpeed;
+		rb.velocity = new Vector2 (moveDirection.x, moveDirection.y);
+		Destroy (gameObject, 3f);
 	}
+
+	void OnTriggerEnter2D (Collider2D col)
+	{
+		if (col.gameObject.name.Equals ("Cat")) {
+			Debug.Log ("Hit!");
+			Destroy (gameObject);
+		}
+	}
+
 }
