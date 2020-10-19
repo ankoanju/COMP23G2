@@ -8,13 +8,13 @@ public class Bullet : MonoBehaviour {
 
 	Rigidbody2D rb;
 
-	GameObject target;
+	Player target;
 	Vector2 moveDirection;
 
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
-		target = GameObject.FindObjectOfType<GameObject>();
+		target = GameObject.FindObjectOfType<Player>();
 		moveDirection = (target.transform.position - transform.position).normalized * moveSpeed;
 		rb.velocity = new Vector2 (moveDirection.x, moveDirection.y);
 		Destroy (gameObject, 3f);
@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D col)
 	{
-		if (col.gameObject.name.Equals ("GameObject")) {
+		if (col.gameObject.name.Equals ("Player")) {
 			Debug.Log ("Hit!");
 			Destroy (gameObject);
 		}
